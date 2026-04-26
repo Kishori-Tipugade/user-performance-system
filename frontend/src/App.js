@@ -51,65 +51,68 @@ function App() {
       <div className="filter">
         <label>Filter by Category:</label>
         <select onChange={(e) => handleFilter(e.target.value)}>
-        <option value="">All</option>
-        <option value="High">High</option>
-        <option value="Medium">Medium</option>
-        <option value="Low">Low</option>
-      </select>
+          <option value="">All</option>
+          <option value="High">High</option>
+          <option value="Medium">Medium</option>
+          <option value="Low">Low</option>
+        </select>
       </div>
 
       {/* LOADING */}
-      {loading && <p>Loading...</p>}
+      {loading && <p className="status">Loading...</p>}
 
       {/* ERROR */}
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p className="error">{error}</p>}
 
       {/* TABLE */}
       {!loading && !error && (
-        <table border="1" cellPadding="10" style={{ marginTop: "20px" }}>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Posts</th>
-              <th>Comments</th>
-              <th>Total Activity</th>
-              <th>Score</th>
-              <th>Category</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {users.length > 0 ? (
-              users.map((u) => (
-                <tr key={u.id}>
-                  <td>{u.name}</td>
-                  <td>{u.activity?.posts || 0}</td>
-                  <td>{u.activity?.comments || 0}</td>
-
-                  {/* ✅ THIS IS WHERE YOU ADD DYNAMIC CALCULATION */}
-                  <td>
-                    {Object.values(u.activity || {}).reduce(
-                      (sum, val) =>
-                        typeof val === "number" ? sum + val : sum,
-                      0
-                    )}
-                  </td>
-
-                  {/* Score from backend */}
-                  <td>{u.score}</td>
-
-                  <td className={u.category.toLowerCase()}>
-                    {u.category}
-                  </td>
-                </tr>
-              ))
-            ) : (
+        <div className="table-wrapper">
+          <table>
+            <thead>
               <tr>
-                <td colSpan="6">No users found</td>
+                <th>Name</th>
+                <th>Posts</th>
+                <th>Comments</th>
+                <th>Total Activity</th>
+                <th>Score</th>
+                <th>Category</th>
               </tr>
-            )}
-          </tbody>
-        </table>
+            </thead>
+
+            <tbody>
+              {users.length > 0 ? (
+                users.map((u) => (
+                  <tr key={u.id}>
+                    <td>{u.name}</td>
+                    <td>{u.activity?.posts || 0}</td>
+                    <td>{u.activity?.comments || 0}</td>
+
+                    {/* Total Activity */}
+                    <td>
+                      {Object.values(u.activity || {}).reduce(
+                        (sum, val) =>
+                          typeof val === "number" ? sum + val : sum,
+                        0
+                      )}
+                    </td>
+
+                    {/* Score */}
+                    <td>{u.score}</td>
+
+                    {/* Category */}
+                    <td className={`category ${u.category.toLowerCase()}`}>
+                      {u.category}
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="6">No users found</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );
