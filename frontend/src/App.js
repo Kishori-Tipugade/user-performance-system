@@ -43,13 +43,27 @@ function App() {
     }
   };
 
+  // 🔥 Stats (INTERVIEW IMPACT)
+  const totalUsers = users.length;
+  const high = users.filter((u) => u.category === "High").length;
+  const medium = users.filter((u) => u.category === "Medium").length;
+  const low = users.filter((u) => u.category === "Low").length;
+
   return (
     <div className="container">
-      <h1>User List</h1>
+      <h1>User Performance Dashboard</h1>
+
+      {/* 🔥 STATS CARDS */}
+      <div className="stats">
+        <div className="card">Users: {totalUsers}</div>
+        <div className="card high-card">High: {high}</div>
+        <div className="card medium-card">Medium: {medium}</div>
+        <div className="card low-card">Low: {low}</div>
+      </div>
 
       {/* FILTER */}
       <div className="filter">
-        <label>Filter by Category:</label>
+        <label>Filter:</label>
         <select onChange={(e) => handleFilter(e.target.value)}>
           <option value="">All</option>
           <option value="High">High</option>
@@ -58,10 +72,7 @@ function App() {
         </select>
       </div>
 
-      {/* LOADING */}
       {loading && <p className="status">Loading...</p>}
-
-      {/* ERROR */}
       {error && <p className="error">{error}</p>}
 
       {/* TABLE */}
@@ -73,43 +84,36 @@ function App() {
                 <th>Name</th>
                 <th>Posts</th>
                 <th>Comments</th>
-                <th>Total Activity</th>
+                <th>Total</th>
                 <th>Score</th>
-                <th>Category</th>
+                <th>Status</th>
               </tr>
             </thead>
 
             <tbody>
-              {users.length > 0 ? (
-                users.map((u) => (
-                  <tr key={u.id}>
-                    <td>{u.name}</td>
-                    <td>{u.activity?.posts || 0}</td>
-                    <td>{u.activity?.comments || 0}</td>
+              {users.map((u) => (
+                <tr key={u.id}>
+                  <td>{u.name}</td>
+                  <td>{u.activity?.posts || 0}</td>
+                  <td>{u.activity?.comments || 0}</td>
 
-                    {/* Total Activity */}
-                    <td>
-                      {Object.values(u.activity || {}).reduce(
-                        (sum, val) =>
-                          typeof val === "number" ? sum + val : sum,
-                        0
-                      )}
-                    </td>
+                  <td>
+                    {Object.values(u.activity || {}).reduce(
+                      (sum, val) =>
+                        typeof val === "number" ? sum + val : sum,
+                      0
+                    )}
+                  </td>
 
-                    {/* Score */}
-                    <td>{u.score}</td>
+                  <td>{u.score}</td>
 
-                    {/* Category */}
-                    <td className={`category ${u.category.toLowerCase()}`}>
+                  <td>
+                    <span className={`badge ${u.category.toLowerCase()}`}>
                       {u.category}
-                    </td>
-                  </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan="6">No users found</td>
+                    </span>
+                  </td>
                 </tr>
-              )}
+              ))}
             </tbody>
           </table>
         </div>

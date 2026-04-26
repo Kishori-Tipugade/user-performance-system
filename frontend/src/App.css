@@ -1,22 +1,52 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f6f8;
+  font-family: "Segoe UI", sans-serif;
+  background: #f4f6f8;
   margin: 0;
 }
 
-/* CONTAINER */
 .container {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 40px auto;
   background: white;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
-/* TITLE */
 h1 {
   margin-bottom: 20px;
+}
+
+/* 🔥 STATS */
+.stats {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+  background: #e9ecef;
+}
+
+.high-card {
+  background: #d4edda;
+  color: green;
+}
+
+.medium-card {
+  background: #fff3cd;
+  color: orange;
+}
+
+.low-card {
+  background: #f8d7da;
+  color: red;
 }
 
 /* FILTER */
@@ -28,23 +58,21 @@ select {
   padding: 6px 10px;
   margin-left: 10px;
   border-radius: 5px;
-  border: 1px solid #ccc;
 }
 
-/* ✅ IMPORTANT: TABLE WRAPPER FOR RESPONSIVENESS */
+/* TABLE */
 .table-wrapper {
   overflow-x: auto;
 }
 
-/* TABLE */
 table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 600px; /* prevents breaking */
+  min-width: 600px;
 }
 
 th {
-  background-color: #333;
+  background: #333;
   color: white;
   padding: 10px;
 }
@@ -53,55 +81,52 @@ td {
   padding: 10px;
   text-align: center;
   border-bottom: 1px solid #ddd;
-  white-space: nowrap; /* prevents ugly wrapping */
 }
 
 tr:hover {
-  background-color: #f1f1f1;
+  background: #f1f1f1;
 }
 
-/* CATEGORY COLORS */
-.high {
-  color: green;
+/* BADGES */
+.badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
   font-weight: bold;
+}
+
+.high {
+  background: #d4edda;
+  color: green;
 }
 
 .medium {
+  background: #fff3cd;
   color: orange;
-  font-weight: bold;
 }
 
 .low {
+  background: #f8d7da;
   color: red;
-  font-weight: bold;
 }
 
-/* STATUS MESSAGES */
+/* STATUS */
 .status {
-  margin-top: 10px;
+  text-align: center;
 }
 
 .error {
   color: red;
-  margin-top: 10px;
+  text-align: center;
 }
 
-/* 🔥 MOBILE RESPONSIVENESS */
-@media (max-width: 600px) {
+/* 🔥 RESPONSIVE */
+@media (max-width: 768px) {
+  .stats {
+    flex-direction: column;
+  }
+
   .container {
     margin: 10px;
-    padding: 15px;
-  }
-
-  h1 {
-    font-size: 20px;
-  }
-
-  table {
-    font-size: 12px;
-  }
-
-  select {
-    margin-top: 8px;
   }
 }
