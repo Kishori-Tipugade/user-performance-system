@@ -56,8 +56,8 @@ project/
 ### 1. Clone Repository
 
 ```
-git clone <your-repo-link>
-cd project
+git clone https://github.com/Kishori-Tipugade/user-performance-system.git
+cd user-performance-system
 
 ---
 
