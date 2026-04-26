@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:5000/api";
+const BASE_URL = "https://user-performance-system.onrender.com/api";
 
 export const getUsers = () => axios.get(`${BASE_URL}/users`);
 export const getScore = (id) => axios.get(`${BASE_URL}/score/${id}`);
