@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "John",
+    "name": "Rahul Sharma",
     "age": 25,
     "activity": { "posts": 10, "comments": 5 }
   },
@@ -13,7 +13,7 @@
   },
   {
   "id": 3,
-  "name": "Alice",
+  "name": "Priya Patil",
   "age": 28,
   "activity": {
     "posts": 20,
@@ -22,7 +22,7 @@
 },
 {
   "id": 4,
-  "name": "Bob",
+  "name": "Amit Verma",
   "age": 26,
   "activity": {
   "posts": 5,
@@ -33,7 +33,7 @@
 },
 {
   "id": 5,
-  "name": "Advanced User",
+  "name": "Sneha Kulkarni",
   "age": 30,
   "activity": {
     "posts": 3,
