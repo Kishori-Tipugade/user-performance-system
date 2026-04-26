@@ -1,0 +1,45 @@
+[
+  {
+    "id": 1,
+    "name": "John",
+    "age": 25,
+    "activity": { "posts": 10, "comments": 5 }
+  },
+  {
+    "id": 2,
+    "name": null,
+    "age": 30,
+    "activity": { "posts": 2 }
+  },
+  {
+  "id": 3,
+  "name": "Alice",
+  "age": 28,
+  "activity": {
+    "posts": 20,
+    "comments": 10
+  }
+},
+{
+  "id": 4,
+  "name": "Bob",
+  "age": 26,
+  "activity": {
+  "posts": 5,
+  "comments": 3,
+  "shares": 7,
+  "likes": 10
+}
+},
+{
+  "id": 5,
+  "name": "Advanced User",
+  "age": 30,
+  "activity": {
+    "posts": 3,
+    "comments": 2,
+    "shares": 10,
+    "likes": 15
+  }
+}
+]
